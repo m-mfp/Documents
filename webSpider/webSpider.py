@@ -1,14 +1,26 @@
 #!/usr/bin/python3
 import requests
 import socket
+import sys
 
-URL = input("URL with http(s): ")
+if "http" not in sys.argv[1]:
+    print("Please provide a valid URL starting with http(s).")
+    sys.exit()
+elif len(sys.argv) < 2:
+    print("Please provide the URL as an argument, starting with http(s).")
+    sys.exit()
+
+URL = sys.argv[1]
 urlList = []
 isFollowed = {}
 
 hostname = URL.split("//")[-1].split("/")[0]
-ip_address = socket.gethostbyname(hostname)
-print(f"This is the IP address for the URL: {ip_address}")
+try:
+    ip_address = socket.gethostbyname(hostname)
+    print(f"This is the IP address for the URL: {ip_address}")
+except:
+    print(f"Something went wrong, did you write {URL} correctly?")
+    sys.exit()
 
 def checkUrlList(URL):
     if URL in urlList:

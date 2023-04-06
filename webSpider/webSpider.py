@@ -3,11 +3,11 @@ import requests
 import socket
 import sys
 
-if "http" not in sys.argv[1]:
-    print("Please provide a valid URL starting with http(s).")
-    sys.exit()
-elif len(sys.argv) < 2:
+if len(sys.argv) < 2:
     print("Please provide the URL as an argument, starting with http(s).")
+    sys.exit()
+elif "http" not in sys.argv[1]:
+    print("Please provide a valid URL starting with http(s).")
     sys.exit()
 
 URL = sys.argv[1]
@@ -37,6 +37,7 @@ def isFollowedCheck(URL):
                 return True
             else:
                 return False
+
 urlList.append(URL)
 
 for URL in urlList:

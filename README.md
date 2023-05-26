@@ -1,2 +1,2 @@
-# Golang
-Golang studies
+# Golang and Python
+Golang and Python studies
